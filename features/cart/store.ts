@@ -13,10 +13,16 @@ type CartStore = {
   addItem: (item: CartItem) => void;
   updateItem: (id: string, quantity: number) => void;
   removeItem: (id: string) => void;
+  fulfillment: "delivery" | "collection";
+  deliveryFee: number;
+  setFulfillment: (f: "delivery" | "collection") => void;
+  clearCart: () => void;
 };
 
 export const useCartStore = create<CartStore>((set) => ({
   items: [],
+  fulfillment: "collection",
+  deliveryFee: 0,
   addItem: (item) =>
     set((state) => {
       const existing = state.items.find((i) => i.id === item.id);
@@ -49,5 +55,18 @@ export const useCartStore = create<CartStore>((set) => ({
           i.id === id ? { ...i, quantity } : i
         )
       };
+    })
+  ,
+  setFulfillment: (f) =>
+    set((state) => {
+      const fee = f === "delivery" ? 3 : 0;
+      return { fulfillment: f, deliveryFee: fee };
+    })
+  ,
+  clearCart: () =>
+    set({
+      items: [],
+      fulfillment: "collection",
+      deliveryFee: 0
     })
 }));

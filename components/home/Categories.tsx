@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 const categories = [
   {
@@ -29,16 +30,17 @@ export function Categories() {
             Baked fresh every morning just for you
           </p>
         </div>
-        <span className="text-orange-500 text-sm font-medium cursor-pointer">
+        <Link href="/products" className="text-orange-500 text-sm font-medium">
           View All →
-        </span>
+        </Link>
       </div>
 
       <div className="grid md:grid-cols-4 gap-6">
         {categories.map((cat) => (
-          <div
+          <Link
             key={cat.title}
-            className="relative h-64 rounded-2xl overflow-hidden group cursor-pointer"
+            href={`/products?category=${encodeURIComponent(cat.title)}`}
+            className="relative h-64 rounded-2xl overflow-hidden group cursor-pointer block"
           >
             <Image
               src={cat.image}
@@ -50,7 +52,7 @@ export function Categories() {
             <div className="absolute bottom-4 left-4 text-white font-semibold text-lg">
               {cat.title}
             </div>
-          </div>
+          </Link>
         ))}
       </div>
     </section>

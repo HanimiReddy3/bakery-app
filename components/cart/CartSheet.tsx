@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import {
   Sheet,
   SheetContent,
@@ -17,9 +18,13 @@ import Link from "next/link";
 import { Trash2 } from "lucide-react";
 
 export function CartSheet({ children }: { children: React.ReactNode }) {
+  const [open, setOpen] = useState(false);
   const items = useCartStore((s) => s.items);
   const removeItem = useCartStore((s) => s.removeItem);
   const updateItem = useCartStore((s) => s.updateItem);
+  const fulfillment = useCartStore((s) => s.fulfillment);
+  const deliveryFee = useCartStore((s) => s.deliveryFee);
+  const setFulfillment = useCartStore((s) => s.setFulfillment);
 
   const handleIncrease = (id: string, currentQty: number) => {
     updateItem(id, Math.min(10, currentQty + 1));
@@ -35,8 +40,10 @@ export function CartSheet({ children }: { children: React.ReactNode }) {
     0
   );
 
+  const totalWithFee = total + (deliveryFee || 0);
+
   return (
-    <Sheet>
+    <Sheet open={open} onOpenChange={setOpen}>
       <SheetTrigger asChild>
         {children}
       </SheetTrigger>
@@ -49,7 +56,7 @@ export function CartSheet({ children }: { children: React.ReactNode }) {
         <div className="mt-6 space-y-4 flex-1 overflow-y-auto">
 
           {items.length === 0 && (
-            <p className="text-neutral-500 text-sm">
+            <p className="text-neutral-500 text-sm text-center">
               Your cart is empty.
             </p>
           )}
@@ -102,15 +109,47 @@ export function CartSheet({ children }: { children: React.ReactNode }) {
 
         </div>
 
+        {/* Fulfillment Option */}
+        <div className="px-5">
+          <p className="text-sm font-medium mb-2">Fulfillment</p>
+          <div className="flex gap-2">
+            <button
+              onClick={() => setFulfillment("collection")}
+              className={`px-3 py-2 rounded-md text-sm font-medium transition w-full ${
+                fulfillment === "collection"
+                  ? "bg-orange-600 text-white"
+                  : "bg-gray-100 text-gray-700 hover:bg-gray-200"
+              }`}
+            >
+              Collection (Pickup)
+            </button>
+            <button
+              onClick={() => setFulfillment("delivery")}
+              className={`px-3 py-2 rounded-md text-sm font-medium transition w-full ${
+                fulfillment === "delivery"
+                  ? "bg-orange-600 text-white"
+                  : "bg-gray-100 text-gray-700 hover:bg-gray-200"
+              }`}
+            >
+              Delivery {deliveryFee ? `(+$${deliveryFee.toFixed(2)})` : ""}
+            </button>
+          </div>
+          <p className="text-xs text-gray-500 mt-2">
+            {fulfillment === "collection"
+              ? "Pick up your items in-store. Ready in ~20 minutes."
+              : "Delivery fee may apply. Estimated delivery 30-45 minutes."}
+          </p>
+        </div>
+
         <Separator className="my-6" />
 
         <SheetFooter className="flex flex-col gap-4">
           <div className="flex justify-between font-semibold text-lg">
             <span>Total</span>
-            <span>${total.toFixed(2)}</span>
+            <span>${totalWithFee.toFixed(2)}</span>
           </div>
 
-          <Link href="/cart">
+          <Link href="/cart" onClick={() => setOpen(false)}>
             <Button className="w-full bg-orange-500 hover:bg-orange-600">
               View Cart
             </Button>

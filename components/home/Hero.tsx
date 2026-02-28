@@ -38,7 +38,7 @@ export function Hero() {
                 Order for Collection
               </Button>
             </Link>
-            <Link href="/menu">
+            <Link href="/products?menu=1">
               <Button  className="bg-orange-500 hover:bg-orange-600 rounded-full px-8 py-6 text-lg">
                 View Menu
               </Button>
