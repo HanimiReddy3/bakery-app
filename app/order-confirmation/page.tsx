@@ -30,7 +30,7 @@ export default function OrderConfirmationPage() {
 
   if (!order) {
     return (
-      <div className="min-h-screen bg-white flex items-center justify-center">
+      <div className="min-h-screen bg-[#f7f1e6] flex items-center justify-center">
         <div className="text-center">
           <p>Loading order details...</p>
         </div>
@@ -40,14 +40,18 @@ export default function OrderConfirmationPage() {
 
   const deliveryTime = order.fulfillment === "collection"
     ? "20 minutes"
-    : "30-45 minutes";
+    : order.fulfillment === "delivery"
+      ? "30-45 minutes"
+      : "Reserved";
 
   const pickupOrDeliveryText = order.fulfillment === "collection"
     ? `Your order will be ready for pickup in approximately ${deliveryTime} at our bakery.`
-    : `Your order will be delivered within ${deliveryTime}.`;
+    : order.fulfillment === "delivery"
+      ? `Your order will be delivered within ${deliveryTime}.`
+      : "Your table is booked. A confirmation has been sent with your reservation details.";
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-[#f7f1e6]">
       <div className="container mx-auto px-4 py-12">
         {/* Success Header */}
         <div className="text-center mb-12">
@@ -62,7 +66,7 @@ export default function OrderConfirmationPage() {
           {/* Order Details */}
           <div className="lg:col-span-2 space-y-6">
             {/* Order Number & Date */}
-            <div className="bg-blue-50 border border-blue-200 rounded-lg p-6">
+            <div className="bg-[#efe7d7] border border-[#d7cfbf] rounded-lg p-6">
               <div className="grid grid-cols-2 gap-6">
                 <div>
                   <p className="text-sm text-gray-600 mb-1">Order Number</p>
@@ -89,14 +93,20 @@ export default function OrderConfirmationPage() {
               <div className="space-y-3">
                 <div>
                   <p className="text-sm text-gray-600 mb-1">Method</p>
-                  <p className="font-semibold capitalize">{order.fulfillment === "collection" ? "Pickup" : "Delivery"}</p>
+                  <p className="font-semibold capitalize">
+                    {order.fulfillment === "collection"
+                      ? "Pickup"
+                      : order.fulfillment === "delivery"
+                        ? "Delivery"
+                        : "Table"}
+                  </p>
                 </div>
                 <div>
                   <p className="text-sm text-gray-600 mb-1">Estimated Time</p>
                   <p className="font-semibold">{deliveryTime}</p>
                 </div>
-                <div className="p-4 bg-orange-50 border border-orange-200 rounded-lg">
-                  <p className="text-sm text-orange-900">{pickupOrDeliveryText}</p>
+                <div className="p-4 bg-[#efe7d7] border border-[#d7cfbf] rounded-lg">
+                  <p className="text-sm text-[#4f6b4f]">{pickupOrDeliveryText}</p>
                 </div>
               </div>
             </div>
@@ -127,7 +137,7 @@ export default function OrderConfirmationPage() {
                       <p className="font-semibold">{item.name}</p>
                       <p className="text-sm text-gray-600">Quantity: {item.quantity}</p>
                     </div>
-                    <p className="font-semibold">${(item.price * item.quantity).toFixed(2)}</p>
+                    <p className="font-semibold">₹{(item.price * item.quantity).toFixed(2)}</p>
                   </div>
                 ))}
               </div>
@@ -136,27 +146,33 @@ export default function OrderConfirmationPage() {
 
           {/* Order Summary Sidebar */}
           <div>
-            <div className="bg-gray-50 border rounded-lg p-6 sticky top-20">
+            <div className="bg-[#fbf7ef] border border-[#e1d7c6] rounded-lg p-6 sticky top-20">
               <h2 className="text-lg font-bold mb-4">Order Summary</h2>
 
               <div className="space-y-3 mb-4 pb-4 border-b">
                 <div className="flex justify-between text-sm">
                   <span>Subtotal</span>
-                  <span>${order.subtotal.toFixed(2)}</span>
+                  <span>₹{order.subtotal.toFixed(2)}</span>
                 </div>
                 <div className="flex justify-between text-sm">
-                  <span className="capitalize">{order.fulfillment === "collection" ? "Pickup" : "Delivery"}</span>
-                  <span>${order.deliveryFee.toFixed(2)}</span>
+                  <span className="capitalize">
+                    {order.fulfillment === "collection"
+                      ? "Pickup"
+                      : order.fulfillment === "delivery"
+                        ? "Delivery"
+                        : "Table"}
+                  </span>
+                  <span>₹{order.deliveryFee.toFixed(2)}</span>
                 </div>
               </div>
 
               <div className="flex justify-between text-lg font-bold mb-6">
                 <span>Total</span>
-                <span>${order.total.toFixed(2)}</span>
+                <span>₹{order.total.toFixed(2)}</span>
               </div>
 
               <div className="space-y-3">
-                <Link href="/products" className="block w-full py-3 bg-orange-600 text-white rounded-lg font-semibold text-center hover:bg-orange-700 transition">
+                <Link href="/products" className="block w-full py-3 bg-[#4f6b4f] text-white rounded-lg font-semibold text-center hover:bg-[#3f5a3f] transition">
                   Continue Shopping
                 </Link>
                 <Link href="/" className="block w-full py-3 border border-gray-300 rounded-lg font-semibold text-center hover:bg-gray-50 transition">
@@ -168,8 +184,8 @@ export default function OrderConfirmationPage() {
         </div>
 
         {/* Additional Info */}
-        <div className="bg-blue-50 border border-blue-200 rounded-lg p-6 text-center">
-          <p className="text-sm text-blue-900">
+        <div className="bg-[#efe7d7] border border-[#d7cfbf] rounded-lg p-6 text-center">
+          <p className="text-sm text-[#4f6b4f]">
             A confirmation email has been sent to <strong>{order.customer.email}</strong>. You can track your order status there.
           </p>
         </div>

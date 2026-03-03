@@ -74,24 +74,24 @@ export function CartSheet({ children }: { children: React.ReactNode }) {
 
               <div className="flex-1 min-w-0">
                 <p className="font-medium text-sm">{item.name}</p>
-                <p className="text-sm text-orange-600 font-semibold">
-                  ${item.price.toFixed(2)}
+                <p className="text-sm text-[#4f6b4f] font-semibold">
+                  ₹{item.price.toFixed(2)}
                 </p>
 
                 {/* Quantity Controls */}
-                <div className="flex items-center gap-2 mt-2 bg-orange-50 rounded-lg p-1 w-fit">
+                <div className="flex items-center gap-2 mt-2 bg-[#f2eadb] rounded-lg p-1 w-fit">
                   <button
                     onClick={() => handleDecrease(item.id, item.quantity)}
-                    className="w-6 h-6 rounded flex items-center justify-center bg-white hover:bg-orange-100 transition"
+                    className="w-6 h-6 rounded flex items-center justify-center bg-white hover:bg-[#e5dccb] transition"
                   >
                     −
                   </button>
-                  <span className="w-6 text-center text-sm font-bold text-orange-600">
+                  <span className="w-6 text-center text-sm font-bold text-[#4f6b4f]">
                     {item.quantity}
                   </span>
                   <button
                     onClick={() => handleIncrease(item.id, item.quantity)}
-                    className="w-6 h-6 rounded flex items-center justify-center bg-white hover:bg-orange-100 transition"
+                    className="w-6 h-6 rounded flex items-center justify-center bg-white hover:bg-[#e5dccb] transition"
                   >
                     +
                   </button>
@@ -117,8 +117,8 @@ export function CartSheet({ children }: { children: React.ReactNode }) {
               onClick={() => setFulfillment("collection")}
               className={`px-3 py-2 rounded-md text-sm font-medium transition w-full ${
                 fulfillment === "collection"
-                  ? "bg-orange-600 text-white"
-                  : "bg-gray-100 text-gray-700 hover:bg-gray-200"
+                  ? "bg-[#4f6b4f] text-white"
+                  : "bg-[#efe7d7] text-[#4a5a4a] hover:bg-[#e5dccb]"
               }`}
             >
               Collection (Pickup)
@@ -127,11 +127,11 @@ export function CartSheet({ children }: { children: React.ReactNode }) {
               onClick={() => setFulfillment("delivery")}
               className={`px-3 py-2 rounded-md text-sm font-medium transition w-full ${
                 fulfillment === "delivery"
-                  ? "bg-orange-600 text-white"
-                  : "bg-gray-100 text-gray-700 hover:bg-gray-200"
+                  ? "bg-[#4f6b4f] text-white"
+                  : "bg-[#efe7d7] text-[#4a5a4a] hover:bg-[#e5dccb]"
               }`}
             >
-              Delivery {deliveryFee ? `(+$${deliveryFee.toFixed(2)})` : ""}
+              Delivery {deliveryFee ? `(+₹${deliveryFee.toFixed(2)})` : ""}
             </button>
           </div>
           <p className="text-xs text-gray-500 mt-2">
@@ -146,11 +146,11 @@ export function CartSheet({ children }: { children: React.ReactNode }) {
         <SheetFooter className="flex flex-col gap-4">
           <div className="flex justify-between font-semibold text-lg">
             <span>Total</span>
-            <span>${totalWithFee.toFixed(2)}</span>
+            <span>₹{totalWithFee.toFixed(2)}</span>
           </div>
 
           <Link href="/cart" onClick={() => setOpen(false)}>
-            <Button className="w-full bg-orange-500 hover:bg-orange-600">
+            <Button className="w-full bg-[#4f6b4f] hover:bg-[#3f5a3f]">
               View Cart
             </Button>
           </Link>

@@ -17,14 +17,14 @@ export default function ProductDetail({ params }: { params: { slug: string } }) 
 
   if (!product) {
     return (
-      <div className="min-h-screen bg-white flex items-center justify-center">
+      <div className="min-h-screen bg-[#f7f1e6] flex items-center justify-center">
         <div className="text-center">
           <h1 className="text-3xl font-bold text-gray-900 mb-4">
             Product not found
           </h1>
           <button
             onClick={() => router.back()}
-            className="inline-flex items-center gap-2 px-6 py-3 bg-orange-600 text-white rounded-lg hover:bg-orange-700 transition"
+            className="inline-flex items-center gap-2 px-6 py-3 bg-[#4f6b4f] text-white rounded-lg hover:bg-[#3f5a3f] transition"
           >
             <ArrowLeft size={20} />
             Go Back
@@ -50,12 +50,12 @@ export default function ProductDetail({ params }: { params: { slug: string } }) 
   const handleDecrease = () => setQuantity((q) => (q > 1 ? q - 1 : 1));
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-[#f7f1e6]">
       {/* Back Button */}
       <div className="container mx-auto px-4 py-4">
         <button
           onClick={() => router.back()}
-          className="inline-flex items-center gap-2 text-orange-600 hover:text-orange-700 font-medium transition"
+          className="inline-flex items-center gap-2 text-[#4f6b4f] hover:text-[#3f5a3f] font-medium transition"
         >
           <ArrowLeft size={20} />
           Back to Shop
@@ -78,7 +78,7 @@ export default function ProductDetail({ params }: { params: { slug: string } }) 
           <div className="flex flex-col justify-center">
             {/* Category & Rating */}
             <div className="flex items-center gap-4 mb-4">
-              <span className="text-sm font-medium text-orange-600 bg-orange-50 px-3 py-1 rounded-full">
+              <span className="text-sm font-medium text-[#4f6b4f] bg-[#efe7d7] px-3 py-1 rounded-full">
                 {product.category}
               </span>
               <div className="flex items-center gap-1">
@@ -101,10 +101,10 @@ export default function ProductDetail({ params }: { params: { slug: string } }) 
             {/* Price */}
             <div className="flex items-baseline gap-2 mb-6">
               <span className="text-3xl font-bold text-gray-900">
-                ${product.price.toFixed(2)}
+                ₹{product.price.toFixed(2)}
               </span>
               <span className="text-lg text-gray-500 line-through">
-                ${(product.price * 1.2).toFixed(2)}
+                ₹{(product.price * 1.2).toFixed(2)}
               </span>
               <span className="text-sm font-medium text-green-600 bg-green-50 px-2 py-1 rounded">
                 Save 17%
@@ -124,7 +124,7 @@ export default function ProductDetail({ params }: { params: { slug: string } }) 
               </div>
               <div>
                 <p className="text-sm text-gray-600 mb-1">Delivery</p>
-                <p className="font-semibold text-gray-900">Free on orders $30+</p>
+                <p className="font-semibold text-gray-900">Free on orders ₹299+</p>
               </div>
               <div>
                 <p className="text-sm text-gray-600 mb-1">Ingredients</p>
@@ -132,7 +132,7 @@ export default function ProductDetail({ params }: { params: { slug: string } }) 
               </div>
               <div>
                 <p className="text-sm text-gray-600 mb-1">Availability</p>
-                <p className="font-semibold text-green-600">In Stock</p>
+                <p className="font-semibold text-[#4f6b4f]">In Stock</p>
               </div>
             </div>
 
@@ -144,7 +144,7 @@ export default function ProductDetail({ params }: { params: { slug: string } }) 
                 <div className="flex items-center border border-gray-300 rounded-lg">
                   <button
                     onClick={handleDecrease}
-                    className="px-4 py-2 text-gray-600 hover:text-orange-600 transition"
+                    className="px-4 py-2 text-gray-600 hover:text-[#4f6b4f] transition"
                   >
                     −
                   </button>
@@ -153,7 +153,7 @@ export default function ProductDetail({ params }: { params: { slug: string } }) 
                   </span>
                   <button
                     onClick={handleIncrease}
-                    className="px-4 py-2 text-gray-600 hover:text-orange-600 transition"
+                    className="px-4 py-2 text-gray-600 hover:text-[#4f6b4f] transition"
                   >
                     +
                   </button>
@@ -165,8 +165,8 @@ export default function ProductDetail({ params }: { params: { slug: string } }) 
                 onClick={handleAddToCart}
                 className={`flex items-center justify-center gap-2 w-full py-4 rounded-lg font-semibold text-lg transition ${
                   addedToCart
-                    ? "bg-green-600 text-white"
-                    : "bg-orange-600 text-white hover:bg-orange-700"
+                    ? "bg-[#3f5a3f] text-white"
+                    : "bg-[#4f6b4f] text-white hover:bg-[#3f5a3f]"
                 }`}
               >
                 <ShoppingCart size={24} />
@@ -187,8 +187,8 @@ export default function ProductDetail({ params }: { params: { slug: string } }) 
             </div>
 
             {/* Guarantee */}
-            <div className="mt-8 p-4 bg-blue-50 border border-blue-200 rounded-lg">
-              <p className="text-sm text-blue-900">
+            <div className="mt-8 p-4 bg-[#efe7d7] border border-[#d7cfbf] rounded-lg">
+              <p className="text-sm text-[#4f6b4f]">
                 ✓ 100% Fresh Guarantee | ✓ Satisfaction Guaranteed | ✓ Easy Returns
               </p>
             </div>
@@ -197,7 +197,7 @@ export default function ProductDetail({ params }: { params: { slug: string } }) 
       </div>
 
       {/* Related Products Section */}
-      <div className="bg-gray-50 py-12 border-t mt-16">
+      <div className="bg-[#fbf7ef] py-12 border-t mt-16">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl font-bold text-gray-900 mb-8">
             Related Products
@@ -223,8 +223,8 @@ export default function ProductDetail({ params }: { params: { slug: string } }) 
                     <h3 className="font-semibold text-gray-900 text-sm mb-2">
                       {relatedProduct.name}
                     </h3>
-                    <p className="text-orange-600 font-bold">
-                      ${relatedProduct.price.toFixed(2)}
+                    <p className="text-[#4f6b4f] font-bold">
+                      ₹{relatedProduct.price.toFixed(2)}
                     </p>
                   </div>
                 </div>

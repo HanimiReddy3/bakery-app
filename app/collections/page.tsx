@@ -14,7 +14,7 @@ export default function CollectionsPage() {
   };
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-[#f7f1e6]">
       <div className="container mx-auto px-4 py-12">
         <h1 className="text-4xl font-bold mb-6">Collections</h1>
 
@@ -24,8 +24,8 @@ export default function CollectionsPage() {
             return (
               <div key={cat} className="bg-white rounded-lg shadow p-6 flex flex-col">
                 <div className="flex items-center gap-4 mb-4">
-                  <div className="p-3 bg-orange-50 rounded-md">
-                    <Icon size={28} className="text-orange-600" />
+                  <div className="p-3 bg-[#efe7d7] rounded-md">
+                    <Icon size={28} className="text-[#4f6b4f]" />
                   </div>
                   <div>
                     <h3 className="text-lg font-semibold">{cat}</h3>
@@ -34,7 +34,7 @@ export default function CollectionsPage() {
                 </div>
 
                 <div className="mt-auto flex gap-2">
-                  <Link href={`/products?category=${encodeURIComponent(cat)}`} className="px-4 py-2 bg-orange-600 text-white rounded-md">
+                  <Link href={`/products?category=${encodeURIComponent(cat)}`} className="px-4 py-2 bg-[#4f6b4f] text-white rounded-md hover:bg-[#3f5a3f] transition">
                     Order Collection
                   </Link>
                   <Link href="/products" className="px-4 py-2 border rounded-md text-gray-700">

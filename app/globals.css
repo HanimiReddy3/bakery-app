@@ -49,37 +49,37 @@
 
 :root {
   --radius: 0.625rem;
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.145 0 0);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.145 0 0);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.145 0 0);
-  --primary: oklch(0.205 0 0);
-  --primary-foreground: oklch(0.985 0 0);
-  --secondary: oklch(0.97 0 0);
-  --secondary-foreground: oklch(0.205 0 0);
-  --muted: oklch(0.97 0 0);
-  --muted-foreground: oklch(0.556 0 0);
-  --accent: oklch(0.97 0 0);
-  --accent-foreground: oklch(0.205 0 0);
+  --background: #f7f1e6;
+  --foreground: #2f3f2f;
+  --card: #fbf7ef;
+  --card-foreground: #2f3f2f;
+  --popover: #fbf7ef;
+  --popover-foreground: #2f3f2f;
+  --primary: #4f6b4f;
+  --primary-foreground: #f9f5ee;
+  --secondary: #efe7d7;
+  --secondary-foreground: #394b39;
+  --muted: #efe7d7;
+  --muted-foreground: #6c7a6a;
+  --accent: #e5dccb;
+  --accent-foreground: #394b39;
   --destructive: oklch(0.577 0.245 27.325);
-  --border: oklch(0.922 0 0);
-  --input: oklch(0.922 0 0);
-  --ring: oklch(0.708 0 0);
+  --border: #e1d7c6;
+  --input: #e1d7c6;
+  --ring: #b7c2ab;
   --chart-1: oklch(0.646 0.222 41.116);
   --chart-2: oklch(0.6 0.118 184.704);
   --chart-3: oklch(0.398 0.07 227.392);
   --chart-4: oklch(0.828 0.189 84.429);
   --chart-5: oklch(0.769 0.188 70.08);
-  --sidebar: oklch(0.985 0 0);
-  --sidebar-foreground: oklch(0.145 0 0);
-  --sidebar-primary: oklch(0.205 0 0);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.97 0 0);
-  --sidebar-accent-foreground: oklch(0.205 0 0);
-  --sidebar-border: oklch(0.922 0 0);
-  --sidebar-ring: oklch(0.708 0 0);
+  --sidebar: #fbf7ef;
+  --sidebar-foreground: #2f3f2f;
+  --sidebar-primary: #4f6b4f;
+  --sidebar-primary-foreground: #f9f5ee;
+  --sidebar-accent: #efe7d7;
+  --sidebar-accent-foreground: #394b39;
+  --sidebar-border: #e1d7c6;
+  --sidebar-ring: #b7c2ab;
 }
 
 .dark {
@@ -136,6 +136,12 @@
 /* Make slick track flex */
 .slick-track {
   display: flex !important;
+}
+
+/* Add vertical padding to slick list */
+.testimonials-section .slick-list {
+  padding-top: 10px !important;
+  padding-bottom: 10px !important;
 }
 
 /* Allow slides to stretch */

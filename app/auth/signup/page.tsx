@@ -42,11 +42,11 @@ export default function SignUp() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-orange-50 to-blue-50 flex items-center justify-center px-4">
+    <div className="min-h-screen bg-gradient-to-br from-[#f7f1e6] to-white flex items-center justify-center px-4">
       <div className="w-full max-w-md bg-white rounded-2xl shadow-xl p-8">
         <div className="text-center mb-8">
           <h1 className="text-3xl font-bold text-gray-900 mb-2">Create Account</h1>
-          <p className="text-gray-600">Join Bakery Delights and start ordering</p>
+          <p className="text-gray-600">Join Pera and start ordering</p>
         </div>
 
         <form onSubmit={handleSignUp} className="space-y-4">
@@ -64,7 +64,7 @@ export default function SignUp() {
               type="text"
               value={name}
               onChange={(e) => setName(e.target.value)}
-              className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-orange-500 focus:border-transparent outline-none transition"
+              className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#4f6b4f] focus:border-transparent outline-none transition"
               placeholder="John Doe"
               required
             />
@@ -78,7 +78,7 @@ export default function SignUp() {
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-orange-500 focus:border-transparent outline-none transition"
+              className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#4f6b4f] focus:border-transparent outline-none transition"
               placeholder="you@example.com"
               required
             />
@@ -93,7 +93,7 @@ export default function SignUp() {
                 type={showPassword ? "text" : "password"}
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-orange-500 focus:border-transparent outline-none transition"
+                className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#4f6b4f] focus:border-transparent outline-none transition"
                 placeholder="••••••••"
                 required
               />
@@ -115,7 +115,7 @@ export default function SignUp() {
               type={showPassword ? "text" : "password"}
               value={confirmPassword}
               onChange={(e) => setConfirmPassword(e.target.value)}
-              className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-orange-500 focus:border-transparent outline-none transition"
+              className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#4f6b4f] focus:border-transparent outline-none transition"
               placeholder="••••••••"
               required
             />
@@ -124,7 +124,7 @@ export default function SignUp() {
           <button
             type="submit"
             disabled={loading}
-            className="w-full bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white font-semibold py-3 px-4 rounded-lg transition disabled:opacity-50"
+            className="w-full bg-gradient-to-r from-[#4f6b4f] to-[#3f5a3f] hover:from-[#3f5a3f] hover:to-[#2f4a2f] text-white font-semibold py-3 px-4 rounded-lg transition disabled:opacity-50"
           >
             {loading ? "Creating Account..." : "Sign Up"}
           </button>
@@ -133,7 +133,7 @@ export default function SignUp() {
         <div className="mt-6 pt-6 border-t">
           <p className="text-center text-gray-600">
             Already have an account?{" "}
-            <Link href="/auth/signin" className="text-orange-600 hover:text-orange-700 font-semibold">
+            <Link href="/auth/signin" className="text-[#4f6b4f] hover:text-[#3f5a3f] font-semibold">
               Sign In
             </Link>
           </p>

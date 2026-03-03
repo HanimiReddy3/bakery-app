@@ -30,10 +30,10 @@ export default function CheckoutPage() {
 
   if (items.length === 0) {
     return (
-      <div className="min-h-screen bg-white flex items-center justify-center">
+      <div className="min-h-screen bg-[#f7f1e6] flex items-center justify-center">
         <div className="text-center">
           <h1 className="text-3xl font-bold mb-4">Your cart is empty</h1>
-          <Link href="/products" className="inline-block px-6 py-3 bg-orange-600 text-white rounded-lg hover:bg-orange-700">
+          <Link href="/products" className="inline-block px-6 py-3 bg-[#4f6b4f] text-white rounded-lg hover:bg-[#3f5a3f]">
             Continue Shopping
           </Link>
         </div>
@@ -80,10 +80,10 @@ export default function CheckoutPage() {
   };
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-[#f7f1e6]">
       <div className="border-b">
         <div className="container mx-auto px-4 py-4">
-          <Link href="/cart" className="inline-flex items-center gap-2 text-orange-600 hover:text-orange-700 font-medium">
+          <Link href="/cart" className="inline-flex items-center gap-2 text-[#4f6b4f] hover:text-[#3f5a3f] font-medium">
             <ArrowLeft size={20} />
             Back to Cart
           </Link>
@@ -108,7 +108,7 @@ export default function CheckoutPage() {
                     value={formData.firstName}
                     onChange={handleChange}
                     required
-                    className="px-4 py-2 border rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent outline-none"
+                    className="px-4 py-2 border rounded-lg focus:ring-2 focus:ring-[#4f6b4f] focus:border-transparent outline-none"
                   />
                   <input
                     type="text"
@@ -117,7 +117,7 @@ export default function CheckoutPage() {
                     value={formData.lastName}
                     onChange={handleChange}
                     required
-                    className="px-4 py-2 border rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent outline-none"
+                    className="px-4 py-2 border rounded-lg focus:ring-2 focus:ring-[#4f6b4f] focus:border-transparent outline-none"
                   />
                   <input
                     type="email"
@@ -126,7 +126,7 @@ export default function CheckoutPage() {
                     value={formData.email}
                     onChange={handleChange}
                     required
-                    className="col-span-2 px-4 py-2 border rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent outline-none"
+                    className="col-span-2 px-4 py-2 border rounded-lg focus:ring-2 focus:ring-[#4f6b4f] focus:border-transparent outline-none"
                   />
                   <input
                     type="tel"
@@ -135,7 +135,7 @@ export default function CheckoutPage() {
                     value={formData.phone}
                     onChange={handleChange}
                     required
-                    className="col-span-2 px-4 py-2 border rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent outline-none"
+                    className="col-span-2 px-4 py-2 border rounded-lg focus:ring-2 focus:ring-[#4f6b4f] focus:border-transparent outline-none"
                   />
                 </div>
               </div>
@@ -152,7 +152,7 @@ export default function CheckoutPage() {
                       value={formData.address}
                       onChange={handleChange}
                       required
-                      className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent outline-none"
+                      className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-[#4f6b4f] focus:border-transparent outline-none"
                     />
                     <div className="grid grid-cols-2 gap-4">
                       <input
@@ -162,7 +162,7 @@ export default function CheckoutPage() {
                         value={formData.city}
                         onChange={handleChange}
                         required
-                        className="px-4 py-2 border rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent outline-none"
+                        className="px-4 py-2 border rounded-lg focus:ring-2 focus:ring-[#4f6b4f] focus:border-transparent outline-none"
                       />
                       <input
                         type="text"
@@ -171,7 +171,7 @@ export default function CheckoutPage() {
                         value={formData.postalCode}
                         onChange={handleChange}
                         required
-                        className="px-4 py-2 border rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent outline-none"
+                        className="px-4 py-2 border rounded-lg focus:ring-2 focus:ring-[#4f6b4f] focus:border-transparent outline-none"
                       />
                     </div>
                   </div>
@@ -187,14 +187,14 @@ export default function CheckoutPage() {
                   value={formData.notes}
                   onChange={handleChange}
                   rows={4}
-                  className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent outline-none"
+                  className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-[#4f6b4f] focus:border-transparent outline-none"
                 />
               </div>
 
               <button
                 type="submit"
                 disabled={loading}
-                className="w-full py-3 bg-orange-600 text-white rounded-lg font-semibold hover:bg-orange-700 disabled:opacity-50 disabled:cursor-not-allowed transition"
+                className="w-full py-3 bg-[#4f6b4f] text-white rounded-lg font-semibold hover:bg-[#3f5a3f] disabled:opacity-50 disabled:cursor-not-allowed transition"
               >
                 {loading ? "Processing Order..." : "Place Order"}
               </button>
@@ -203,14 +203,14 @@ export default function CheckoutPage() {
 
           {/* Order Summary */}
           <div>
-            <div className="bg-gray-50 rounded-lg border p-6 sticky top-20">
+            <div className="bg-[#fbf7ef] rounded-lg border border-[#e1d7c6] p-6 sticky top-20">
               <h2 className="text-lg font-bold mb-4">Order Summary</h2>
 
               <div className="space-y-2 mb-4">
                 {items.map((item) => (
                   <div key={item.id} className="flex justify-between text-sm">
                     <span>{item.name} x{item.quantity}</span>
-                    <span>${(item.price * item.quantity).toFixed(2)}</span>
+                    <span>₹{(item.price * item.quantity).toFixed(2)}</span>
                   </div>
                 ))}
               </div>
@@ -218,24 +218,32 @@ export default function CheckoutPage() {
               <div className="border-t pt-4 space-y-3 mb-6">
                 <div className="flex justify-between text-sm">
                   <span>Subtotal</span>
-                  <span>${subtotal.toFixed(2)}</span>
+                  <span>₹{subtotal.toFixed(2)}</span>
                 </div>
                 <div className="flex justify-between text-sm">
-                  <span className="capitalize">{fulfillment === "collection" ? "Pickup" : "Delivery"}</span>
-                  <span>${deliveryFee.toFixed(2)}</span>
+                  <span className="capitalize">
+                    {fulfillment === "collection"
+                      ? "Pickup"
+                      : fulfillment === "delivery"
+                        ? "Delivery"
+                        : "Table"}
+                  </span>
+                  <span>₹{deliveryFee.toFixed(2)}</span>
                 </div>
                 <div className="flex justify-between text-lg font-bold">
                   <span>Total</span>
-                  <span>${total.toFixed(2)}</span>
+                  <span>₹{total.toFixed(2)}</span>
                 </div>
               </div>
 
-              <div className="space-y-2 p-3 bg-blue-50 rounded-lg border border-blue-200">
-                <p className="text-xs font-semibold text-blue-900">Fulfillment</p>
-                <p className="text-xs text-blue-900">
+              <div className="space-y-2 p-3 bg-[#efe7d7] rounded-lg border border-[#d7cfbf]">
+                <p className="text-xs font-semibold text-[#4f6b4f]">Fulfillment</p>
+                <p className="text-xs text-[#4f6b4f]">
                   {fulfillment === "collection"
                     ? "Ready for pickup in approximately 20 minutes"
-                    : "Delivery within 30-45 minutes"}
+                    : fulfillment === "delivery"
+                      ? "Delivery within 30-45 minutes"
+                      : "Table reservation confirmed. We'll see you soon."}
                 </p>
               </div>
             </div>

@@ -27,11 +27,11 @@ export default function SignIn() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-orange-50 to-blue-50 flex items-center justify-center px-4">
+    <div className="min-h-screen bg-gradient-to-br from-[#f7f1e6] to-white flex items-center justify-center px-4">
       <div className="w-full max-w-md bg-white rounded-2xl shadow-xl p-8">
         <div className="text-center mb-8">
           <h1 className="text-3xl font-bold text-gray-900 mb-2">Welcome Back</h1>
-          <p className="text-gray-600">Sign in to your Bakery Delights account</p>
+          <p className="text-gray-600">Sign in to your Pera account</p>
         </div>
 
         <form onSubmit={handleSignIn} className="space-y-4">
@@ -43,7 +43,7 @@ export default function SignIn() {
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-orange-500 focus:border-transparent outline-none transition"
+              className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#4f6b4f] focus:border-transparent outline-none transition"
               placeholder="you@example.com"
               required
             />
@@ -58,7 +58,7 @@ export default function SignIn() {
                 type={showPassword ? "text" : "password"}
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-orange-500 focus:border-transparent outline-none transition"
+                className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#4f6b4f] focus:border-transparent outline-none transition"
                 placeholder="••••••••"
                 required
               />
@@ -75,7 +75,7 @@ export default function SignIn() {
           <button
             type="submit"
             disabled={loading}
-            className="w-full bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white font-semibold py-3 px-4 rounded-lg transition disabled:opacity-50"
+            className="w-full bg-gradient-to-r from-[#4f6b4f] to-[#3f5a3f] hover:from-[#3f5a3f] hover:to-[#2f4a2f] text-white font-semibold py-3 px-4 rounded-lg transition disabled:opacity-50"
           >
             {loading ? "Signing in..." : "Sign In"}
           </button>
@@ -84,7 +84,7 @@ export default function SignIn() {
         <div className="mt-6 pt-6 border-t">
           <p className="text-center text-gray-600">
             Don't have an account?{" "}
-            <Link href="/auth/signup" className="text-orange-600 hover:text-orange-700 font-semibold">
+            <Link href="/auth/signup" className="text-[#4f6b4f] hover:text-[#3f5a3f] font-semibold">
               Sign Up
             </Link>
           </p>

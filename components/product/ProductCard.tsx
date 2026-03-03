@@ -78,7 +78,7 @@ export function ProductCard({ product }: any) {
       <CardContent className="space-y-2 mt-4 flex-1">
         <div className="flex items-start justify-between">
           <h3 className="font-semibold text-lg">{product.name}</h3>
-          <p className="text-orange-600 font-bold ml-4">${product.price.toFixed(2)}</p>
+          <p className="text-[#4f6b4f] font-bold ml-4">₹{product.price.toFixed(2)}</p>
         </div>
 
         <p className="text-sm text-neutral-500 line-clamp-2">{product.description}</p>
@@ -88,7 +88,7 @@ export function ProductCard({ product }: any) {
         {!isInCart || qty === 0 ? (
           <button
             onClick={handleAddClick}
-            className="w-full bg-orange-500 hover:bg-orange-600 text-white font-semibold py-3 px-4 rounded-lg transition shadow-md flex items-center justify-center gap-2"
+            className="w-full bg-[#4f6b4f] hover:bg-[#3f5a3f] text-white font-semibold py-3 px-4 rounded-lg transition shadow-md flex items-center justify-center gap-2"
           >
             <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
               <path d="M6 6h15l-1.5 9h-12z" strokeLinecap="round" strokeLinejoin="round" />
@@ -98,19 +98,19 @@ export function ProductCard({ product }: any) {
             Add to Cart
           </button>
         ) : (
-          <div className="w-full flex items-center gap-2 bg-orange-50 rounded-lg p-2">
+          <div className="w-full flex items-center gap-2 bg-[#f2eadb] rounded-lg p-2">
             <button
               onClick={handleDecrease}
-              className="w-8 h-8 rounded-md bg-white hover:bg-orange-100 flex items-center justify-center font-bold text-orange-600 transition"
+              className="w-8 h-8 rounded-md bg-white hover:bg-[#e5dccb] flex items-center justify-center font-bold text-[#4f6b4f] transition"
             >
               −
             </button>
 
-            <span className="flex-1 text-center font-bold text-orange-600 text-lg">{qty}</span>
+            <span className="flex-1 text-center font-bold text-[#4f6b4f] text-lg">{qty}</span>
 
             <button
               onClick={handleIncrease}
-              className="w-8 h-8 rounded-md bg-white hover:bg-orange-100 flex items-center justify-center font-bold text-orange-600 transition"
+              className="w-8 h-8 rounded-md bg-white hover:bg-[#e5dccb] flex items-center justify-center font-bold text-[#4f6b4f] transition"
             >
               +
             </button>

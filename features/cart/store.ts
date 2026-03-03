@@ -13,9 +13,9 @@ type CartStore = {
   addItem: (item: CartItem) => void;
   updateItem: (id: string, quantity: number) => void;
   removeItem: (id: string) => void;
-  fulfillment: "delivery" | "collection";
+  fulfillment: "delivery" | "collection" | "table";
   deliveryFee: number;
-  setFulfillment: (f: "delivery" | "collection") => void;
+  setFulfillment: (f: "delivery" | "collection" | "table") => void;
   clearCart: () => void;
 };
 

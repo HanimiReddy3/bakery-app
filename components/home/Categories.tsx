@@ -30,7 +30,7 @@ export function Categories() {
             Baked fresh every morning just for you
           </p>
         </div>
-        <Link href="/products" className="text-orange-500 text-sm font-medium">
+        <Link href="/products" className="text-[#4f6b4f] text-sm font-medium hover:text-[#3f5a3f]">
           View All →
         </Link>
       </div>

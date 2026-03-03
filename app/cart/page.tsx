@@ -25,11 +25,11 @@ export default function CartPage() {
   };
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-[#f7f1e6]">
       {/* Back Link */}
       <div className="border-b">
         <div className="container mx-auto px-4 py-4">
-          <Link href="/products" className="inline-flex items-center gap-2 text-orange-600 hover:text-orange-700 font-medium">
+          <Link href="/products" className="inline-flex items-center gap-2 text-[#4f6b4f] hover:text-[#3f5a3f] font-medium">
             <ArrowLeft size={20} />
             Continue Shopping
           </Link>
@@ -42,7 +42,7 @@ export default function CartPage() {
         {items.length === 0 ? (
           <div className="text-center py-16">
             <p className="text-xl text-gray-600 mb-6">Your cart is empty</p>
-            <Link href="/products" className="inline-block px-6 py-3 bg-orange-600 text-white rounded-lg hover:bg-orange-700">
+            <Link href="/products" className="inline-block px-6 py-3 bg-[#4f6b4f] text-white rounded-lg hover:bg-[#3f5a3f]">
               Start Shopping
             </Link>
           </div>
@@ -64,7 +64,7 @@ export default function CartPage() {
 
                     <div className="flex-1">
                       <h3 className="font-semibold text-lg mb-2">{item.name}</h3>
-                      <p className="text-orange-600 font-bold mb-4">${item.price.toFixed(2)}</p>
+                      <p className="text-[#4f6b4f] font-bold mb-4">₹{item.price.toFixed(2)}</p>
 
                       <div className="flex items-center gap-4">
                         <div className="flex items-center gap-2 border border-gray-300 rounded-lg">
@@ -93,8 +93,8 @@ export default function CartPage() {
                     </div>
 
                     <div className="text-right">
-                      <p className="font-bold text-lg">${(item.price * item.quantity).toFixed(2)}</p>
-                      <p className="text-sm text-gray-500">{item.quantity} x ${item.price.toFixed(2)}</p>
+                      <p className="font-bold text-lg">₹{(item.price * item.quantity).toFixed(2)}</p>
+                      <p className="text-sm text-gray-500">{item.quantity} x ₹{item.price.toFixed(2)}</p>
                     </div>
                   </div>
                 ))}
@@ -103,33 +103,44 @@ export default function CartPage() {
 
             {/* Order Summary */}
             <div>
-              <div className="bg-gray-50 rounded-lg border p-6 sticky top-20">
+              <div className="bg-[#fbf7ef] rounded-lg border border-[#e1d7c6] p-6 sticky top-20">
                 <h2 className="text-lg font-bold mb-4">Order Summary</h2>
 
                 <div className="space-y-3 mb-4 pb-4 border-b">
                   <div className="flex justify-between text-sm">
                     <span>Subtotal</span>
-                    <span>${subtotal.toFixed(2)}</span>
+                    <span>₹{subtotal.toFixed(2)}</span>
                   </div>
 
                   <div className="flex justify-between text-sm">
-                    <span className="capitalize">{fulfillment === "collection" ? "Pickup" : "Delivery"}</span>
-                    <span>${deliveryFee.toFixed(2)}</span>
+                    <span className="capitalize">
+                      {fulfillment === "collection"
+                        ? "Pickup"
+                        : fulfillment === "delivery"
+                          ? "Delivery"
+                          : "Table"}
+                    </span>
+                    <span>₹{deliveryFee.toFixed(2)}</span>
                   </div>
                 </div>
 
                 <div className="flex justify-between text-lg font-bold mb-6">
                   <span>Total</span>
-                  <span>${total.toFixed(2)}</span>
+                  <span>₹{total.toFixed(2)}</span>
                 </div>
 
-                <div className="space-y-2 mb-6 p-3 bg-blue-50 rounded-lg border border-blue-200">
-                  <p className="text-xs text-blue-900">
-                    <strong>Fulfillment:</strong> {fulfillment === "collection" ? "Pickup ready in ~20 minutes" : "Delivery 30-45 minutes"}
+                <div className="space-y-2 mb-6 p-3 bg-[#efe7d7] rounded-lg border border-[#d7cfbf]">
+                  <p className="text-xs text-[#4f6b4f]">
+                      <strong>Fulfillment:</strong>{" "}
+                      {fulfillment === "collection"
+                        ? "Pickup ready in ~20 minutes"
+                        : fulfillment === "delivery"
+                          ? "Delivery 30-45 minutes"
+                          : "Table reservation confirmed"}
                   </p>
                 </div>
 
-                <Link href="/checkout" className="block w-full py-3 bg-orange-600 text-white rounded-lg font-semibold text-center hover:bg-orange-700 transition">
+                <Link href="/checkout" className="block w-full py-3 bg-[#4f6b4f] text-white rounded-lg font-semibold text-center hover:bg-[#3f5a3f] transition">
                   Proceed to Checkout
                 </Link>
 

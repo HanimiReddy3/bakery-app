@@ -19,7 +19,7 @@ export function Hero() {
       {/* content centered over image */}
       <div className="absolute inset-0 flex items-center justify-center">
         <div className="text-center text-white space-y-6 px-4 md:px-0">
-          <span className="inline-block bg-orange-200 text-orange-700 px-3 py-1 rounded-full uppercase text-xs tracking-wide">
+          <span className="inline-block bg-[#e5dccb] text-[#4f6b4f] px-3 py-1 rounded-full uppercase text-xs tracking-wide">
             Freshly Baked Daily
           </span>
 
@@ -33,13 +33,13 @@ export function Hero() {
 
           <div className="flex flex-col sm:flex-row gap-6 pt-6 justify-center">
             <Link href="/products">
-              <Button className="bg-orange-500 hover:bg-orange-600 rounded-full px-10 py-6 text-lg flex items-center gap-2">
+              <Button className="bg-[#4f6b4f] hover:bg-[#3f5a3f] rounded-full px-10 py-6 text-lg flex items-center gap-2">
                 
                 Order for Collection
               </Button>
             </Link>
             <Link href="/products?menu=1">
-              <Button  className="bg-orange-500 hover:bg-orange-600 rounded-full px-8 py-6 text-lg">
+              <Button  className="bg-[#4f6b4f] hover:bg-[#3f5a3f] rounded-full px-8 py-6 text-lg">
                 View Menu
               </Button>
             </Link>

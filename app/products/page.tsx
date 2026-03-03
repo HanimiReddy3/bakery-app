@@ -98,9 +98,9 @@ export default function Shop() {
   }, [searchQuery, selectedCategory, sortOption]);
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-[#f7f1e6]">
       {/* Hero Section */}
-      <section className="bg-gradient-to-r from-orange-50 to-blue-50 py-12 px-4">
+      <section className="bg-gradient-to-r from-[#f7f1e6] to-white py-12 px-4">
         <div className="container mx-auto text-center">
           <h1 className="text-4xl sm:text-5xl font-bold text-gray-900 mb-4">
             Our Shop
@@ -119,7 +119,7 @@ export default function Shop() {
 
             <button
               onClick={() => orderCollection()}
-              className="px-4 py-2 bg-orange-600 text-white rounded-md text-sm font-medium hover:bg-orange-700"
+              className="px-4 py-2 bg-[#4f6b4f] text-white rounded-md text-sm font-medium hover:bg-[#3f5a3f]"
             >
               Order for Collection
             </button>
@@ -141,9 +141,10 @@ export default function Shop() {
               </div>
               <div className="mt-3 border-t pt-3">
                 <p className="text-xs text-gray-500 mb-2">Quick actions</p>
-                <div className="flex gap-2">
-                  <button onClick={() => orderCollection()} className="px-3 py-2 bg-orange-600 text-white rounded text-sm">Start Collection</button>
+                <div className="flex flex-wrap gap-2">
+                  <button onClick={() => orderCollection()} className="px-3 py-2 bg-[#4f6b4f] text-white rounded text-sm hover:bg-[#3f5a3f]">Start Collection</button>
                   <button onClick={() => { setFulfillment("delivery"); setMenuOpen(false); }} className="px-3 py-2 border rounded text-sm">Delivery</button>
+                  <button onClick={() => { setFulfillment("table"); setMenuOpen(false); }} className="px-3 py-2 border rounded text-sm">Book a Table</button>
                 </div>
               </div>
             </div>
@@ -163,7 +164,7 @@ export default function Shop() {
                 placeholder="Search products..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full pl-10 pr-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-orange-500 focus:border-transparent outline-none transition"
+                className="w-full pl-10 pr-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#4f6b4f] focus:border-transparent outline-none transition"
               />
             </div>
           </div>
@@ -176,8 +177,8 @@ export default function Shop() {
                 onClick={() => handleCategorySelect(category)}
                 className={`whitespace-nowrap px-4 py-2 rounded-full font-medium transition ${
                   selectedCategory === category
-                    ? "bg-orange-600 text-white"
-                    : "bg-gray-100 text-gray-700 hover:bg-gray-200"
+                    ? "bg-[#4f6b4f] text-white"
+                    : "bg-[#efe7d7] text-[#4a5a4a] hover:bg-[#e5dccb]"
                 }`}
               >
                 {category}

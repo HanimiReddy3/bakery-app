@@ -9,25 +9,25 @@ import { useRef } from "react";
 
 const testimonials = [
   {
-    name: "Emily H.",
+    name: "User 1",
     role: "Customer",
     text: "The sourdough is absolutely life-changing. You can taste the love in every bite.",
     rating: 5
   },
   {
-    name: "Michael J.",
+    name: "User 2",
     role: "Customer",
     text: "Best croissants outside of Paris. Flaky, buttery and fresh every morning.",
     rating: 5
   },
   {
-    name: "Sarah C.",
+    name: "User 3",
     role: "Customer",
     text: "Delivery service is impeccable. My tarts arrived perfectly fresh.",
     rating: 5
   },
   {
-    name: "David W.",
+    name: "User 4",
     role: "Customer",
     text: "Love that they use organic ingredients throughout. Highly recommended!",
     rating: 5
@@ -54,10 +54,10 @@ export function Testimonials() {
   };
 
   return (
-    <section className="container mx-auto px-6 text-center">
+    <section className="container mx-auto px-6 text-center testimonials-section">
       <h2 className="text-3xl font-bold mb-4">What Our Customers Are Saying</h2>
 
-      <p className="text-neutral-500 mb-8">Real stories from our beloved pastry lovers</p>
+      <p className="text-neutral-500 mb-4">Real stories from our beloved pastry lovers</p>
 
       <div className="relative">
         <div className="absolute -left-2 top-1/2 transform -translate-y-1/2 z-20">
@@ -87,12 +87,12 @@ export function Testimonials() {
                 <CardContent className="p-6 space-y-4">
                   <div className="flex gap-1 justify-start">
                     {Array.from({ length: t.rating }).map((_, i) => (
-                      <Star key={i} className="w-4 h-4 fill-orange-500 text-orange-500" />
+                      <Star key={i} className="w-4 h-4 fill-[#4f6b4f] text-[#4f6b4f]" />
                     ))}
                   </div>
                   <p className="text-neutral-600 italic text-left text-sm">"{t.text}"</p>
                   <div className="text-left">
-                    <p className="font-semibold text-orange-500">{t.name}</p>
+                    <p className="font-semibold text-[#4f6b4f]">{t.name}</p>
                     <p className="text-xs text-neutral-500">{t.role}</p>
                   </div>
                 </CardContent>

@@ -10,11 +10,11 @@ export default function MyOrdersPage() {
 
   if (!isLoggedIn) {
     return (
-      <div className="min-h-screen bg-white flex items-center justify-center">
+      <div className="min-h-screen bg-[#f7f1e6] flex items-center justify-center">
         <div className="text-center">
           <h1 className="text-3xl font-bold mb-4">Please Sign In</h1>
           <p className="text-gray-600 mb-6">You need to be logged in to view your orders.</p>
-          <Link href="/auth/signin" className="inline-block px-6 py-3 bg-orange-600 text-white rounded-lg hover:bg-orange-700">
+          <Link href="/auth/signin" className="inline-block px-6 py-3 bg-[#4f6b4f] text-white rounded-lg hover:bg-[#3f5a3f]">
             Sign In
           </Link>
         </div>
@@ -23,10 +23,10 @@ export default function MyOrdersPage() {
   }
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-[#f7f1e6]">
       <div className="border-b">
         <div className="container mx-auto px-4 py-4">
-          <Link href="/" className="inline-flex items-center gap-2 text-orange-600 hover:text-orange-700 font-medium">
+          <Link href="/" className="inline-flex items-center gap-2 text-[#4f6b4f] hover:text-[#3f5a3f] font-medium">
             <ArrowLeft size={20} />
             Back to Home
           </Link>
@@ -41,7 +41,7 @@ export default function MyOrdersPage() {
             <Package size={48} className="mx-auto text-gray-400 mb-4" />
             <h2 className="text-xl font-semibold text-gray-900 mb-2">No Orders Yet</h2>
             <p className="text-gray-600 mb-6">You haven't placed any orders yet.</p>
-            <Link href="/products" className="inline-block px-6 py-3 bg-orange-600 text-white rounded-lg hover:bg-orange-700">
+            <Link href="/products" className="inline-block px-6 py-3 bg-[#4f6b4f] text-white rounded-lg hover:bg-[#3f5a3f]">
               Start Shopping
             </Link>
           </div>
@@ -62,7 +62,7 @@ export default function MyOrdersPage() {
                   </div>
                   <div>
                     <p className="text-sm text-gray-600 mb-1">Total</p>
-                    <p className="font-semibold">${order.total.toFixed(2)}</p>
+                    <p className="font-semibold">₹{order.total.toFixed(2)}</p>
                   </div>
                   <div>
                     <p className="text-sm text-gray-600 mb-1">Status</p>
@@ -75,14 +75,14 @@ export default function MyOrdersPage() {
                   <ul className="space-y-1 text-sm">
                     {order.items.map((item) => (
                       <li key={item.id} className="text-gray-600">
-                        {item.name} x{item.quantity} - ${(item.price * item.quantity).toFixed(2)}
+                        {item.name} x{item.quantity} - ₹{(item.price * item.quantity).toFixed(2)}
                       </li>
                     ))}
                   </ul>
                 </div>
 
                 <div className="mt-4 pt-4 border-t flex gap-2">
-                  <button className="px-4 py-2 bg-orange-600 text-white rounded-lg text-sm hover:bg-orange-700">
+                  <button className="px-4 py-2 bg-[#4f6b4f] text-white rounded-lg text-sm hover:bg-[#3f5a3f]">
                     Reorder
                   </button>
                   <button className="px-4 py-2 border border-gray-300 rounded-lg text-sm hover:bg-gray-50">

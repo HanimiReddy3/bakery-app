@@ -3,9 +3,9 @@ import { Phone, Mail, MapPin, Clock } from "lucide-react";
 
 export default function Contact() {
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-[#f7f1e6]">
       {/* Hero Section */}
-      <section className="bg-gradient-to-r from-orange-50 to-blue-50 py-16 px-4">
+      <section className="bg-gradient-to-r from-[#f7f1e6] to-white py-16 px-4">
         <div className="container mx-auto text-center">
           <h1 className="text-4xl sm:text-5xl font-bold text-gray-900 mb-4">Get In Touch</h1>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
@@ -24,16 +24,16 @@ export default function Contact() {
             
             <div className="space-y-6">
               <div className="flex gap-4">
-                <Phone className="w-6 h-6 text-orange-600 flex-shrink-0 mt-1" />
+                <Phone className="w-6 h-6 text-[#4f6b4f] flex-shrink-0 mt-1" />
                 <div>
                   <h3 className="font-semibold text-gray-900">Phone</h3>
-                  <p className="text-gray-600">+1 (555) 123-4567</p>
-                  <p className="text-gray-600">+1 (555) 123-4568</p>
+                  <p className="text-gray-600">+91 90000 12345</p>
+                  <p className="text-gray-600">+91 90000 67890</p>
                 </div>
               </div>
 
               <div className="flex gap-4">
-                <Mail className="w-6 h-6 text-orange-600 flex-shrink-0 mt-1" />
+                <Mail className="w-6 h-6 text-[#4f6b4f] flex-shrink-0 mt-1" />
                 <div>
                   <h3 className="font-semibold text-gray-900">Email</h3>
                   <p className="text-gray-600">hello@bakerydelights.com</p>
@@ -42,17 +42,17 @@ export default function Contact() {
               </div>
 
               <div className="flex gap-4">
-                <MapPin className="w-6 h-6 text-orange-600 flex-shrink-0 mt-1" />
+                <MapPin className="w-6 h-6 text-[#4f6b4f] flex-shrink-0 mt-1" />
                 <div>
                   <h3 className="font-semibold text-gray-900">Address</h3>
-                  <p className="text-gray-600">123 Bakery Street</p>
-                  <p className="text-gray-600">New York, NY 10001</p>
-                  <p className="text-gray-600">United States</p>
+                  <p className="text-gray-600">Road No. 12, Banjara Hills</p>
+                  <p className="text-gray-600">Hyderabad, Telangana 500034</p>
+                  <p className="text-gray-600">India</p>
                 </div>
               </div>
 
               <div className="flex gap-4">
-                <Clock className="w-6 h-6 text-orange-600 flex-shrink-0 mt-1" />
+                <Clock className="w-6 h-6 text-[#4f6b4f] flex-shrink-0 mt-1" />
                 <div>
                   <h3 className="font-semibold text-gray-900">Hours</h3>
                   <p className="text-gray-600">Mon - Fri: 7:00 AM - 8:00 PM</p>
@@ -74,7 +74,7 @@ export default function Contact() {
                 </label>
                 <input
                   type="text"
-                  className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-orange-500 focus:border-transparent outline-none transition"
+                  className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#4f6b4f] focus:border-transparent outline-none transition"
                   placeholder="John Doe"
                 />
               </div>
@@ -85,7 +85,7 @@ export default function Contact() {
                 </label>
                 <input
                   type="email"
-                  className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-orange-500 focus:border-transparent outline-none transition"
+                  className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#4f6b4f] focus:border-transparent outline-none transition"
                   placeholder="you@example.com"
                 />
               </div>
@@ -96,7 +96,7 @@ export default function Contact() {
                 </label>
                 <input
                   type="tel"
-                  className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-orange-500 focus:border-transparent outline-none transition"
+                  className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#4f6b4f] focus:border-transparent outline-none transition"
                   placeholder="+1 (555) 123-4567"
                 />
               </div>
@@ -107,7 +107,7 @@ export default function Contact() {
                 </label>
                 <input
                   type="text"
-                  className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-orange-500 focus:border-transparent outline-none transition"
+                  className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#4f6b4f] focus:border-transparent outline-none transition"
                   placeholder="How can we help?"
                 />
               </div>
@@ -118,14 +118,14 @@ export default function Contact() {
                 </label>
                 <textarea
                   rows={5}
-                  className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-orange-500 focus:border-transparent outline-none transition resize-none"
+                  className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#4f6b4f] focus:border-transparent outline-none transition resize-none"
                   placeholder="Tell us what you think..."
                 />
               </div>
 
               <button
                 type="submit"
-                className="w-full bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white font-semibold py-3 px-4 rounded-lg transition"
+                className="w-full bg-gradient-to-r from-[#4f6b4f] to-[#3f5a3f] hover:from-[#3f5a3f] hover:to-[#2f4a2f] text-white font-semibold py-3 px-4 rounded-lg transition"
               >
                 Send Message
               </button>
