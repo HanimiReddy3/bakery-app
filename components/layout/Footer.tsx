@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import { Facebook, Instagram, Twitter, Youtube } from "lucide-react";
+import { Facebook, Instagram, Twitter, Youtube, Phone, MapPin, Clock, Mail } from "lucide-react";
 
 export function Footer() {
   return (
@@ -10,13 +10,13 @@ export function Footer() {
           <div className="space-y-5">
             <div className="flex items-center gap-3">
               <Image
-                src="/pera-logo.png"
+                src="/logo-pera.webp"
                 alt="Pera"
                 width={40}
                 height={40}
                 className="h-10 w-10 rounded-full object-contain"
               />
-              <h3 className="text-xl font-semibold tracking-tight">Pera</h3>
+              <h3 className="text-xl font-semibold tracking-tight">perapatisserie</h3>
             </div>
             <p className="text-sm leading-6 text-[#6c7a6a]">
               Artisan bakery crafting small-batch breads, pastries, and seasonal treats.
@@ -31,14 +31,16 @@ export function Footer() {
 
           <div>
             <h4 className="mb-4 text-sm font-semibold uppercase tracking-[0.2em] text-[#58684f]">
-              Shop
+              Useful links
             </h4>
             <ul className="space-y-3 text-sm text-[#6c7a6a]">
-              <li><Link href="/" className="transition hover:text-[#4f6b4f] hover:underline underline-offset-4">Home</Link></li>
-              <li><Link href="/products" className="transition hover:text-[#4f6b4f] hover:underline underline-offset-4">Shop All</Link></li>
-              <li><Link href="/collections" className="transition hover:text-[#4f6b4f] hover:underline underline-offset-4">Collections</Link></li>
-              <li><Link href="/story" className="transition hover:text-[#4f6b4f] hover:underline underline-offset-4">Our Story</Link></li>
-              <li><Link href="/contact" className="transition hover:text-[#4f6b4f] hover:underline underline-offset-4">Store Locator</Link></li>
+              <li><Link href="/story" className="transition hover:text-[#4f6b4f] hover:underline underline-offset-4">About</Link></li>
+              <li><Link href="/products" className="transition hover:text-[#4f6b4f] hover:underline underline-offset-4">Products</Link></li>
+              {/* <li><Link href="/contact" className="transition hover:text-[#4f6b4f] hover:underline underline-offset-4">Contact</Link></li> */}
+              <li><Link href="/story" className="transition hover:text-[#4f6b4f] hover:underline underline-offset-4">Our Team</Link></li>
+              {/* <li><Link href="/collections#corporate-orders" className="transition hover:text-[#4f6b4f] hover:underline underline-offset-4">Corporate Orders</Link></li> */}
+              <li><Link href="/contact" className="transition hover:text-[#4f6b4f] hover:underline underline-offset-4">Our Outlets</Link></li>
+              <li><Link href="/contact" className="transition hover:text-[#4f6b4f] hover:underline underline-offset-4">Policies</Link></li>
             </ul>
           </div>
 
@@ -47,24 +49,24 @@ export function Footer() {
               Support
             </h4>
             <ul className="space-y-3 text-sm text-[#6c7a6a]">
-              <li><Link href="/contact" className="transition hover:text-[#4f6b4f] hover:underline underline-offset-4">Help & Contact</Link></li>
               <li><Link href="/account/orders" className="transition hover:text-[#4f6b4f] hover:underline underline-offset-4">Track Your Order</Link></li>
-              <li><Link href="/contact" className="transition hover:text-[#4f6b4f] hover:underline underline-offset-4">Delivery Zones</Link></li>
-              <li><Link href="/contact" className="transition hover:text-[#4f6b4f] hover:underline underline-offset-4">Allergen & Nutrition Guide</Link></li>
-              <li><Link href="/contact" className="transition hover:text-[#4f6b4f] hover:underline underline-offset-4">Catering & Events</Link></li>
+              <li><Link href="/contact" className="transition hover:text-[#4f6b4f] hover:underline underline-offset-4">Allergy &amp; Nutrition Guide</Link></li>
+              <li><Link href="/contact" className="transition hover:text-[#4f6b4f] hover:underline underline-offset-4">Help &amp; Support</Link></li>
+              <li><Link href="/contact" className="transition hover:text-[#4f6b4f] hover:underline underline-offset-4">FAQ&apos;s</Link></li>
+              <li><Link href="/contact" className="transition hover:text-[#4f6b4f] hover:underline underline-offset-4">Feedback</Link></li>
             </ul>
           </div>
 
           <div className="space-y-5">
             <div>
               <h4 className="mb-2 text-sm font-semibold uppercase tracking-[0.2em] text-[#58684f]">
-                Bakery News
+                Contact Us
               </h4>
               <p className="text-sm text-[#6c7a6a]">
-                Get early access to seasonal drops and members-only offers.
+                Get in touch with us for any inquiries or support.
               </p>
             </div>
-            <form className="flex flex-col gap-3 sm:flex-row">
+            {/* <form className="flex flex-col gap-3 sm:flex-row">
               <label className="sr-only" htmlFor="footer-email">Email address</label>
               <input
                 id="footer-email"
@@ -78,23 +80,29 @@ export function Footer() {
               >
                 Subscribe
               </button>
-            </form>
+            </form> */}
             <div className="grid gap-3 text-sm text-[#6c7a6a]">
-              <div className="flex items-center gap-2">
-                <span className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-[#d7cfbf] bg-white">
-                  ☎️
+              <div className="flex items-center gap-3">
+                <span className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-[#d7cfbf] bg-white text-[#4f6b4f]">
+                  <Phone className="h-4 w-4" />
                 </span>
                 <span>+91 90000 12345</span>
               </div>
-              <div className="flex items-center gap-2">
-                <span className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-[#d7cfbf] bg-white">
-                  📍
+              <div className="flex items-center gap-3">
+                <span className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-[#d7cfbf] bg-white text-[#4f6b4f]">
+                  <Mail className="h-4 w-4" />
+                </span>
+                <span>hello@pera-bakery.com</span>
+              </div>
+              <div className="flex items-center gap-3">
+                <span className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-[#d7cfbf] bg-white text-[#4f6b4f]">
+                  <MapPin className="h-4 w-4" />
                 </span>
                 <span>Road No. 12, Banjara Hills, Hyderabad</span>
               </div>
-              <div className="flex items-center gap-2">
-                <span className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-[#d7cfbf] bg-white">
-                  ⏰
+              <div className="flex items-center gap-3">
+                <span className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-[#d7cfbf] bg-white text-[#4f6b4f]">
+                  <Clock className="h-4 w-4" />
                 </span>
                 <span>Mon–Sat 7am–7pm · Sun 8am–4pm</span>
               </div>
@@ -104,7 +112,7 @@ export function Footer() {
 
         <div className="mt-12 flex flex-col gap-6 border-t border-[#e1d7c6] pt-6 text-sm text-[#6c7a6a] md:flex-row md:items-center md:justify-between">
           <div className="flex flex-wrap items-center gap-4">
-            <span>© 2026 Pera. All rights reserved.</span>
+            <span>© 2026 perapatisserie. All rights reserved.</span>
             <div className="flex items-center gap-2">
               <span className="rounded-full border border-[#d7cfbf] px-3 py-1 text-xs text-[#5f6f5f]">Visa</span>
               <span className="rounded-full border border-[#d7cfbf] px-3 py-1 text-xs text-[#5f6f5f]">Mastercard</span>

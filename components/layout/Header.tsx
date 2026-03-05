@@ -2,19 +2,17 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { ShoppingCart, Search, User, X, Menu, Home, ShoppingBag, Phone, LogOut, Settings } from "lucide-react";
+import { ShoppingCart, Search, User, X, Menu, Home, ShoppingBag, Phone, LogOut, Settings, ChevronDown } from "lucide-react";
 import { useCartStore } from "@/features/cart/store";
 import { useAuthStore } from "@/features/auth/store";
 import { Input } from "@/components/ui/input";
-import dynamic from "next/dynamic";
+import { CartSheet } from "../cart/CartSheet";
 import { useState, useRef, useEffect } from "react";
-
-const CartSheet = dynamic(
-  () => import("../cart/CartSheet").then((mod) => mod.CartSheet),
-  { ssr: false }
-);
+import { usePathname } from "next/navigation";
 
 export function Header() {
+  const pathname = usePathname();
+  const isHome = pathname === "/";
   const items = useCartStore((s) => s.items);
   const user = useAuthStore((s) => s.user);
   const isLoggedIn = useAuthStore((s) => s.isLoggedIn);
@@ -22,11 +20,25 @@ export function Header() {
   const [searchOpen, setSearchOpen] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [userMenuOpen, setUserMenuOpen] = useState(false);
+  const [openMenu, setOpenMenu] = useState<"products" | "custom" | "contact" | null>(null);
   const [searchQuery, setSearchQuery] = useState("");
   const searchRef = useRef<HTMLDivElement>(null);
   const userMenuRef = useRef<HTMLDivElement>(null);
+  const menuCloseTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const cartCount = items.reduce((sum, item) => sum + item.quantity, 0);
+
+  const headerClassName = isHome
+    ? "fixed top-0 left-0 right-0 z-50"
+    : "sticky top-0 z-50 bg-[#4f6b4f] shadow-sm";
+
+  const linkClassName = isHome
+    ? "text-[#7a3f2b] hover:text-[#5f2e1f] transition inline-flex items-center px-2 py-2 h-10"
+    : "text-white/90 hover:text-white transition inline-flex items-center px-2 py-2 h-10";
+
+  const iconClassName = isHome
+    ? "text-[#7a3f2b] hover:text-[#5f2e1f]"
+    : "text-white/90 hover:text-white";
 
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
@@ -53,8 +65,26 @@ export function Header() {
     setUserMenuOpen(false);
   };
 
+  const openMenuWithCancel = (menu: "products" | "custom" | "contact") => {
+    if (menuCloseTimeoutRef.current) {
+      clearTimeout(menuCloseTimeoutRef.current);
+      menuCloseTimeoutRef.current = null;
+    }
+    setOpenMenu(menu);
+  };
+
+  const closeMenuWithDelay = () => {
+    if (menuCloseTimeoutRef.current) {
+      clearTimeout(menuCloseTimeoutRef.current);
+    }
+    menuCloseTimeoutRef.current = setTimeout(() => {
+      setOpenMenu(null);
+      menuCloseTimeoutRef.current = null;
+    }, 180);
+  };
+
   return (
-    <header className="border-b bg-gradient-to-r from-[#f7f1e6] to-white sticky top-0 z-50 shadow-sm">
+    <header className={headerClassName}>
       <style>{`
         @keyframes expandSearch {
           from {
@@ -83,54 +113,181 @@ export function Header() {
         }
       `}</style>
 
-      <div className="container mx-auto px-4 sm:px-6 py-3 flex items-center justify-between gap-4 h-16">
+      <div className="mx-auto px-4 sm:px-6">
+        <div
+          className={`flex items-center justify-between gap-4 h-16 ${
+            isHome
+              ? "my-3 bg-white/90 backdrop-blur-md rounded-full shadow-lg px-6"
+              : "py-3"
+          }`}
+        >
 
         {/* Logo */}
-        <Link href="/" className="text-xl sm:text-2xl font-bold flex items-center gap-3 whitespace-nowrap flex-shrink-0">
+        <Link
+          href="/"
+          className={`text-xl sm:text-2xl font-bold flex items-center gap-3 whitespace-nowrap flex-shrink-0 ${
+            isHome ? "text-[#7a3f2b]" : "text-white"
+          }`}
+        >
           <Image
-            src="/pera-logo.png"
+            src="/logo-pera.webp"
             alt="Pera"
             width={40}
             height={40}
             className="h-10 w-10 rounded-full object-contain"
           />
-          <span className="hidden sm:inline">Pera</span>
-          <span className="sm:hidden text-sm">Pera</span>
+          <span className="hidden sm:inline">perapatisserie</span>
+          <span className="sm:hidden text-sm">perapatisserie</span>
         </Link>
 
         {/* Desktop Navigation */}
-        <nav className="hidden lg:flex gap-6 text-sm font-medium flex-1 justify-center">
-          <Link href="/" className="text-gray-700 hover:text-[#4f6b4f] transition flex items-center gap-1">
+        <nav className="hidden lg:flex items-center gap-6 text-sm font-medium flex-1 justify-center">
+          <Link href="/" className={`${linkClassName} gap-1`}>
             <Home size={16} />
             Home
           </Link>
-          <Link href="/products" className="text-gray-700 hover:text-[#4f6b4f] transition flex items-center gap-1">
-            <ShoppingBag size={16} />
-            Shop
+          <Link href="/story" className={linkClassName}>
+            About
           </Link>
-          <Link href="/blog" className="text-gray-700 hover:text-[#4f6b4f] transition">
-            Blog
+          <div
+            className="relative"
+            onMouseEnter={() => openMenuWithCancel("products")}
+            onMouseLeave={closeMenuWithDelay}
+          >
+            <button
+              type="button"
+              className={`${linkClassName} gap-1 h-10`}
+              aria-haspopup="true"
+              aria-expanded={openMenu === "products"}
+              onClick={() => setOpenMenu(openMenu === "products" ? null : "products")}
+            >
+              <ShoppingBag size={16} />
+              Products
+              <ChevronDown size={14} />
+            </button>
+            <div
+              onMouseEnter={() => openMenuWithCancel("products")}
+              onMouseLeave={closeMenuWithDelay}
+              className={`absolute left-0 top-full mt-2 w-60 rounded-2xl bg-[#f7f1e6] text-[#4f6b4f] shadow-xl border border-[#d7cfbf] transition ${
+                openMenu === "products"
+                  ? "opacity-100 visible pointer-events-auto"
+                  : "opacity-0 invisible pointer-events-none"
+              }`}
+            >
+              <div className="py-2">
+                <Link href="/products" onClick={() => setOpenMenu(null)} className="block px-5 py-2 text-sm hover:bg-[#efe7d7]">
+                  All Products
+                </Link>
+                <Link href="/products?category=Cupcakes" onClick={() => setOpenMenu(null)} className="block px-5 py-2 text-sm hover:bg-[#efe7d7]">
+                  Cupcakes
+                </Link>
+                <Link href="/products?category=Bread" onClick={() => setOpenMenu(null)} className="block px-5 py-2 text-sm hover:bg-[#efe7d7]">
+                  Bread
+                </Link>
+                <Link href="/products?category=Tarts" onClick={() => setOpenMenu(null)} className="block px-5 py-2 text-sm hover:bg-[#efe7d7]">
+                  Tarts
+                </Link>
+                <Link href="/products?category=Pastries" onClick={() => setOpenMenu(null)} className="block px-5 py-2 text-sm hover:bg-[#efe7d7]">
+                  Pastries
+                </Link>
+              </div>
+            </div>
+          </div>
+          <div
+            className="relative"
+            onMouseEnter={() => openMenuWithCancel("custom")}
+            onMouseLeave={closeMenuWithDelay}
+          >
+            <button
+              type="button"
+              className={`${linkClassName} gap-1 h-10`}
+              aria-haspopup="true"
+              aria-expanded={openMenu === "custom"}
+              onClick={() => setOpenMenu(openMenu === "custom" ? null : "custom")}
+            >
+              Custom Orders
+              <ChevronDown size={14} />
+            </button>
+            <div
+              onMouseEnter={() => openMenuWithCancel("custom")}
+              onMouseLeave={closeMenuWithDelay}
+              className={`absolute left-0 top-full mt-2 w-60 rounded-2xl bg-[#f7f1e6] text-[#4f6b4f] shadow-xl border border-[#d7cfbf] transition ${
+                openMenu === "custom"
+                  ? "opacity-100 visible pointer-events-auto"
+                  : "opacity-0 invisible pointer-events-none"
+              }`}
+            >
+              <div className="py-2">
+                <Link href="/collections#gifting" onClick={() => setOpenMenu(null)} className="block px-5 py-2 text-sm hover:bg-[#efe7d7]">
+                  Gifting
+                </Link>
+                <Link href="/collections#corporate-orders" onClick={() => setOpenMenu(null)} className="block px-5 py-2 text-sm hover:bg-[#efe7d7]">
+                  Corporate Orders
+                </Link>
+              </div>
+            </div>
+          </div>
+          <Link href="/products?category=Custom%20Cake" className={linkClassName}>
+            Customised Cake
           </Link>
-          <Link href="/contact" className="text-gray-700 hover:text-[#4f6b4f] transition flex items-center gap-1">
-            <Phone size={16} />
-            Contact
+          <Link href="/blog" className={linkClassName}>
+            Blogs
           </Link>
+          <div
+            className="relative"
+            onMouseEnter={() => openMenuWithCancel("contact")}
+            onMouseLeave={closeMenuWithDelay}
+          >
+            <button
+              type="button"
+              className={`${linkClassName} gap-1 h-10`}
+              aria-haspopup="true"
+              aria-expanded={openMenu === "contact"}
+              onClick={() => setOpenMenu(openMenu === "contact" ? null : "contact")}
+            >
+              Contact
+              <ChevronDown size={14} />
+            </button>
+            <div
+              onMouseEnter={() => openMenuWithCancel("contact")}
+              onMouseLeave={closeMenuWithDelay}
+              className={`absolute left-0 top-full mt-2 w-60 rounded-2xl bg-[#f7f1e6] text-[#4f6b4f] shadow-xl border border-[#d7cfbf] transition ${
+                openMenu === "contact"
+                  ? "opacity-100 visible pointer-events-auto"
+                  : "opacity-0 invisible pointer-events-none"
+              }`}
+            >
+              <div className="py-2">
+                <Link href="/contact" onClick={() => setOpenMenu(null)} className="block px-5 py-2 text-sm hover:bg-[#efe7d7]">
+                  Contact Us
+                </Link>
+                <Link href="/products?menu=1" onClick={() => setOpenMenu(null)} className="block px-5 py-2 text-sm hover:bg-[#efe7d7]">
+                  Order for Collection
+                </Link>
+                <Link href="/collections" onClick={() => setOpenMenu(null)} className="block px-5 py-2 text-sm hover:bg-[#efe7d7]">
+                  Custom Orders
+                </Link>
+              </div>
+            </div>
+          </div>
         </nav>
 
         {/* Right Section */}
         <div className="flex items-center gap-2 sm:gap-4">
           {/* Search Bar */}
-          <div 
+          {/* <div 
             ref={searchRef}
             className={`flex items-center gap-2 rounded-full px-3 h-10 overflow-hidden transition-all ${
               searchOpen 
                 ? "bg-white search-expanding shadow-md" 
+                : isHome
+                ? "bg-[#f7f1e6]/70 search-collapsing"
                 : "bg-white/50 search-collapsing"
             }`}
           >
             <button
               onClick={() => setSearchOpen(!searchOpen)}
-              className="text-gray-500 hover:text-[#4f6b4f] transition flex-shrink-0"
+              className={`transition flex-shrink-0 ${iconClassName}`}
             >
               <Search size={18} />
             </button>
@@ -145,12 +302,12 @@ export function Header() {
                 autoFocus
               />
             )}
-          </div>
+          </div> */}
 
           {/* Cart Icon */}
           <CartSheet>
             <div className="relative cursor-pointer hover:scale-110 transition">
-              <ShoppingCart size={20} className="text-gray-600 hover:text-[#4f6b4f]" />
+              <ShoppingCart size={20} className={iconClassName} />
               {cartCount > 0 && (
                 <span className="absolute -top-3 -right-3 bg-gradient-to-r from-[#4f6b4f] to-[#3f5a3f] text-white text-xs font-bold rounded-full w-6 h-6 flex items-center justify-center shadow-md">
                   {cartCount > 99 ? "99+" : cartCount}
@@ -163,7 +320,9 @@ export function Header() {
           <div ref={userMenuRef} className="relative">
             <button
               onClick={() => setUserMenuOpen(!userMenuOpen)}
-              className="text-gray-600 hover:text-[#4f6b4f] transition p-1 hover:bg-white/50 rounded-full"
+              className={`transition p-1 rounded-full ${
+                isHome ? "text-[#7a3f2b] hover:text-[#5f2e1f] hover:bg-[#f7f1e6]" : "text-white/90 hover:text-white hover:bg-white/10"
+              }`}
             >
               <User size={20} />
             </button>
@@ -174,7 +333,7 @@ export function Header() {
                 {!isLoggedIn ? (
                   <>
                     <div className="px-4 py-3 border-b bg-[#efe7d7]">
-                      <p className="text-sm font-semibold text-gray-900 mb-3">Welcome to Pera!</p>
+                      <p className="text-sm font-semibold text-gray-900 mb-3">Welcome to perapatisserie!</p>
                     </div>
                     <Link
                       href="/auth/signin"
@@ -240,10 +399,11 @@ export function Header() {
           {/* Mobile Menu */}
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="lg:hidden text-gray-600 hover:text-[#4f6b4f] transition p-1"
+            className={`lg:hidden transition p-1 ${iconClassName}`}
           >
             {mobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
           </button>
+        </div>
         </div>
       </div>
 
@@ -253,11 +413,28 @@ export function Header() {
           <Link href="/" className="block px-4 py-2 text-sm font-medium text-gray-700 hover:bg-[#efe7d7] rounded-lg transition">
             Home
           </Link>
+          <Link href="/story" className="block px-4 py-2 text-sm font-medium text-gray-700 hover:bg-[#efe7d7] rounded-lg transition">
+            About
+          </Link>
           <Link href="/products" className="block px-4 py-2 text-sm font-medium text-gray-700 hover:bg-[#efe7d7] rounded-lg transition">
-            Shop
+            Products
+          </Link>
+          <div className="px-4 py-2">
+            <div className="text-xs font-semibold uppercase tracking-wide text-gray-400 mb-2">Custom Orders</div>
+            <div className="space-y-1">
+              <Link href="/collections#gifting" className="block px-3 py-2 text-sm font-medium text-gray-700 hover:bg-[#efe7d7] rounded-lg transition">
+                Gifting
+              </Link>
+              <Link href="/collections#corporate-orders" className="block px-3 py-2 text-sm font-medium text-gray-700 hover:bg-[#efe7d7] rounded-lg transition">
+                Corporate Orders
+              </Link>
+            </div>
+          </div>
+          <Link href="/products?category=Custom%20Cake" className="block px-4 py-2 text-sm font-medium text-gray-700 hover:bg-[#efe7d7] rounded-lg transition">
+            Customised Cake
           </Link>
           <Link href="/blog" className="block px-4 py-2 text-sm font-medium text-gray-700 hover:bg-[#efe7d7] rounded-lg transition">
-            Blog
+            Blogs
           </Link>
           <Link href="/contact" className="block px-4 py-2 text-sm font-medium text-gray-700 hover:bg-[#efe7d7] rounded-lg transition">
             Contact
