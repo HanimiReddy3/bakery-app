@@ -48,12 +48,12 @@ export function CartSheet({ children }: { children: React.ReactNode }) {
         {children}
       </SheetTrigger>
 
-      <SheetContent className="w-[400px] sm:w-[450px]">
+      <SheetContent className="w-[90vw] max-w-xs sm:w-[400px] sm:max-w-sm md:w-[450px] md:max-w-md">
         <SheetHeader>
           <SheetTitle>Your Cart</SheetTitle>
         </SheetHeader>
 
-        <div className="mt-6 space-y-4 flex-1 overflow-y-auto">
+        <div className="mt-4 sm:mt-6 space-y-4 flex-1 overflow-y-auto px-2 sm:px-0">
 
           {items.length === 0 && (
             <p className="text-neutral-500 text-sm text-center">
@@ -62,8 +62,8 @@ export function CartSheet({ children }: { children: React.ReactNode }) {
           )}
 
           {items.map((item) => (
-            <div key={item.id} className="flex gap-3 items-start border-b pb-4 px-5">
-              <div className="relative w-16 h-16 rounded-md overflow-hidden flex-shrink-0">
+            <div key={item.id} className="flex flex-row gap-2 sm:gap-3 items-start border-b pb-4 px-2 sm:px-5 relative">
+              <div className="relative w-14 h-14 sm:w-16 sm:h-16 rounded-md overflow-hidden flex-shrink-0">
                 <Image
                   src={item.image}
                   alt={item.name}
@@ -74,12 +74,13 @@ export function CartSheet({ children }: { children: React.ReactNode }) {
 
               <div className="flex-1 min-w-0">
                 <p className="font-medium text-sm">{item.name}</p>
-                <p className="text-sm text-[#4f6b4f] font-semibold">
+                {/* Hide this price, move summary to the right */}
+                {/* <p className="text-sm text-[#4f6b4f] font-semibold">
                   ₹{item.price.toFixed(2)}
-                </p>
+                </p> */}
 
                 {/* Quantity Controls */}
-                <div className="flex items-center gap-2 mt-2 bg-[#f2eadb] rounded-lg p-1 w-fit">
+                <div className="flex items-center gap-1 sm:gap-2 mt-2 bg-[#f2eadb] rounded-lg p-1 w-fit">
                   <button
                     onClick={() => handleDecrease(item.id, item.quantity)}
                     className="w-6 h-6 rounded flex items-center justify-center bg-white hover:bg-[#e5dccb] transition"
@@ -95,22 +96,26 @@ export function CartSheet({ children }: { children: React.ReactNode }) {
                   >
                     +
                   </button>
+                  <button
+                    onClick={() => removeItem(item.id)}
+                    className="text-neutral-400 hover:text-red-500 transition flex-shrink-0 self-start mt-0"
+                  >
+                    <Trash2 size={18} />
+                  </button>
                 </div>
               </div>
 
-              <button
-                onClick={() => removeItem(item.id)}
-                className="text-neutral-400 hover:text-red-500 transition flex-shrink-0"
-              >
-                <Trash2 size={18} />
-              </button>
+              <div className="ml-auto self-start text-right min-w-[80px]">
+                <p className="font-bold text-lg text-[#4f6b4f]">₹{item.price.toFixed(2)}</p>
+                <p className="text-sm text-gray-500">{item.quantity} x ₹{item.price.toFixed(2)}</p>
+              </div>
             </div>
           ))}
 
         </div>
 
         {/* Fulfillment Option */}
-        <div className="px-5">
+        <div className="px-2 sm:px-5">
           <p className="text-sm font-medium mb-2">Fulfillment</p>
           <div className="flex gap-2">
             <button

@@ -5,7 +5,7 @@ import Link from "next/link";
 export function Hero() {
   return (
     <>
-    <section className="relative w-full h-[700px] pt-20">
+    <section className="relative w-full h-[700px] pt-20 flex items-center justify-center">
       <Image
         src="/hero-bg.jpg"
         alt="Fresh Bread"
@@ -19,13 +19,13 @@ export function Hero() {
 
       {/* content positioned like reference */}
       <div className="absolute inset-0 flex items-center justify-center z-10 pt-6 sm:pt-10">
-        <div className="container mx-auto px-4 sm:px-6">
-          <div className="max-w-2xl text-white space-y-6 pt-28 pb-52 text-center mx-auto">
+        <div className="w-full flex justify-center">
+          <div className="max-w-2xl w-full text-white space-y-6 pt-28 pb-52 text-center mx-auto px-4 sm:px-6">
             <span className="inline-block bg-[#e5dccb] text-[#4f6b4f] px-3 py-1 rounded-full uppercase text-xs tracking-wide">
               Freshly Baked Daily
             </span>
 
-            <h1 className="text-5xl font-bold leading-tight">
+            <h1 className="lg:text-5xl sm:text-2xl font-bold leading-tight">
               The Heart of Sourdough <br /> in Your Neighborhood
             </h1>
 
@@ -33,14 +33,14 @@ export function Hero() {
               Experience the warmth of artisanal techniques and heritage grains. Order online and collect your warm loaf straight from our oven.
             </p>
 
-            <div className="flex flex-col sm:flex-row gap-6 pt-4 justify-center">
+            <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 pt-4 justify-center items-center">
               <Link href="/products">
-                <Button className="bg-[#4f6b4f] hover:bg-[#3f5a3f] rounded-full px-10 py-6 text-lg flex items-center gap-2">
+                <Button className="bg-[#4f6b4f] hover:bg-[#3f5a3f] rounded-full px-8 sm:px-10 py-5 sm:py-6 text-base sm:text-lg flex items-center gap-2 w-full sm:w-auto">
                   Order for Collection
                 </Button>
               </Link>
               <Link href="/products?menu=1">
-                <Button className="bg-[#4f6b4f] hover:bg-[#3f5a3f] rounded-full px-8 py-6 text-lg">
+                <Button className="bg-[#4f6b4f] hover:bg-[#3f5a3f] rounded-full px-8 py-5 sm:py-6 text-base sm:text-lg w-full sm:w-auto">
                   View Menu
                 </Button>
               </Link>

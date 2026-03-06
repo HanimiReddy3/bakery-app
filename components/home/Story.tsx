@@ -3,8 +3,8 @@ import Image from "next/image";
 export function Story() {
   return (
     <section className="container mx-auto px-6">
-      <div className="bg-[#f2eadb] rounded-3xl p-12 grid md:grid-cols-2 gap-12 items-center">
-        <div className="relative h-[400px]">
+      <div className="bg-[#f2eadb] rounded-3xl p-6 sm:p-10 md:p-16 grid md:grid-cols-2 gap-8 md:gap-16 items-center">
+        <div className="relative h-[300px] sm:h-[400px] mb-6 md:mb-0">
           <Image
             src="https://images.unsplash.com/photo-1600565193348-f74bd3c7ccdf"
             alt="Baker"
@@ -13,12 +13,12 @@ export function Story() {
           />
         </div>
 
-        <div className="space-y-6">
+        <div className="flex flex-col gap-4 sm:gap-6">
           <span className="text-[#4f6b4f] text-sm font-semibold uppercase">
             Our Craft & Story
           </span>
 
-          <h2 className="text-3xl font-bold">
+          <h2 className="text-2xl sm:text-3xl font-bold">
             Tradition in Every Bite
           </h2>
 
@@ -28,7 +28,7 @@ export function Story() {
             and the purest ingredients.
           </p>
 
-          <div className="flex gap-10 text-[#4f6b4f] font-semibold">
+          <div className="flex gap-6 sm:gap-10 text-[#4f6b4f] font-semibold mt-4">
             <div>
               <p className="text-2xl">100%</p>
               <p className="text-sm text-neutral-600">Organic</p>

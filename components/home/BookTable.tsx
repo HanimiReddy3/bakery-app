@@ -46,7 +46,7 @@ export function BookTable() {
 
   return (
     <section className="container mx-auto px-6">
-      <div className="grid gap-10 rounded-3xl bg-[#efe7d7] p-10 md:grid-cols-[1.1fr_0.9fr] md:items-center">
+      <div className="grid gap-8 rounded-3xl bg-[#efe7d7] p-5 sm:p-8 md:p-10 md:grid-cols-[1.1fr_0.9fr] md:items-center">
         <div className="space-y-5">
           <p className="text-sm font-semibold uppercase tracking-[0.3em] text-[#6b7d5a]">
             Book a Table

@@ -92,7 +92,7 @@ export default function CartPage() {
                       </div>
                     </div>
 
-                    <div className="text-right">
+                    <div className="text-right max-w-[90px] w-full break-words truncate sm:max-w-none ml-auto self-start">
                       <p className="font-bold text-lg">₹{(item.price * item.quantity).toFixed(2)}</p>
                       <p className="text-sm text-gray-500">{item.quantity} x ₹{item.price.toFixed(2)}</p>
                     </div>

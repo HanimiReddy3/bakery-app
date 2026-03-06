@@ -113,11 +113,11 @@ export function Header() {
         }
       `}</style>
 
-      <div className="mx-auto px-4 sm:px-6">
+      <div className="mx-auto lg:px-4">
         <div
           className={`flex items-center justify-between gap-4 h-16 ${
             isHome
-              ? "my-6 bg-white/90 backdrop-blur-md rounded-full shadow-lg px-6"
+              ? "lg:my-6 bg-white/90 backdrop-blur-md lg:rounded-full shadow-lg px-6"
               : "py-3"
           }`}
         >
@@ -135,7 +135,7 @@ export function Header() {
             width={40}
             height={40}
             className={`rounded-full object-contain ${
-            isHome ? "h-25 w-25" : "h-10 w-10"
+            isHome ? "lg:h-25 lg:w-25 sm:h-10 sm:w-10" : "h-10 w-10"
           }`}
             
           />
