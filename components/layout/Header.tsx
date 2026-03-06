@@ -117,7 +117,7 @@ export function Header() {
         <div
           className={`flex items-center justify-between gap-4 h-16 ${
             isHome
-              ? "my-3 bg-white/90 backdrop-blur-md rounded-full shadow-lg px-6"
+              ? "my-6 bg-white/90 backdrop-blur-md rounded-full shadow-lg px-6"
               : "py-3"
           }`}
         >
@@ -134,7 +134,10 @@ export function Header() {
             alt="Pera"
             width={40}
             height={40}
-            className="h-10 w-10 rounded-full object-contain"
+            className={`rounded-full object-contain ${
+            isHome ? "h-25 w-25" : "h-10 w-10"
+          }`}
+            
           />
           <span className="hidden sm:inline">perapatisserie</span>
           <span className="sm:hidden text-sm">perapatisserie</span>

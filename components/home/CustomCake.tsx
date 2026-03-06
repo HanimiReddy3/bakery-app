@@ -28,7 +28,7 @@ export function CustomCake() {
           <div className="mt-8">
             <Link
               href="/contact"
-              className="inline-flex items-center justify-center rounded-full bg-[#f43f5e] px-8 py-3 text-sm sm:text-base font-semibold text-white shadow-lg shadow-pink-500/30 hover:bg-[#e11d48] transition"
+              className="inline-flex items-center justify-center rounded-full px-8 py-3 text-sm sm:text-base font-semibold text-white shadow-lg shadow-pink-500/30  transition bg-[#4f6b4f] hover:bg-[#3f5a3f]"
             >
               Start Customizing
             </Link>
